@@ -3,21 +3,21 @@ import CardList from './Card/cardList';
 import Navbar from './navbar/navbar';
 import Loading from './Loading/loading';
 
-const Body = () => {
+const Body = ({ kode_negara }) => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
-  const [state,setState] = useState(false);
+  const [state, setState] = useState(false);
 
   useEffect(() => {
     fetchArticles();
     setState(false);
-  }, [state]);
+  }, [kode_negara,state]);
 
   const fetchArticles = async () => {
     try {
       setIsLoading(true);
-      const url = `https://newsapi.org/v2/top-headlines?q=${searchQuery}&country=id&apiKey=8433effe354a4a12925b65155fa041be`;
+      const url = `https://newsapi.org/v2/top-headlines?q=${searchQuery}&country=${kode_negara}&apiKey=8433effe354a4a12925b65155fa041be`;
       const response = await fetch(url);
       const data = await response.json();
 
@@ -67,7 +67,12 @@ const Body = () => {
 
   return (
     <div>
-      <Navbar logo="React Class News" menuItems={['Home', 'About', 'Contact']} />
+      <Navbar
+  logo="React Class News"
+  menuItems={['Indonesia', 'United States', 'Arab']}
+  paths={['/', '/us', '/ar']}
+/>
+
       <div className="container">
         <div className="row justify-content-center mt-4">
           <div className="col-lg-6">

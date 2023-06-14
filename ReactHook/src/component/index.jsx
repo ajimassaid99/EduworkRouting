@@ -7,10 +7,12 @@ const Body = () => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
+  const [state,setState] = useState(false);
 
   useEffect(() => {
     fetchArticles();
-  }, []);
+    setState(false);
+  }, [state]);
 
   const fetchArticles = async () => {
     try {
@@ -38,7 +40,7 @@ const Body = () => {
   };
 
   const handleSearch = () => {
-    fetchArticles();
+    setState(true);
   };
 
   const handleInputChange = (event) => {

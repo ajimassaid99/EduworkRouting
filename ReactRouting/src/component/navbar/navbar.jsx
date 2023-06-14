@@ -19,13 +19,13 @@ class Navbar extends Component {
   }
 
   render() {
-    const { logo, menuItems, paths } = this.props; // tambahkan properti paths
+    const { logo, menuItems, paths } = this.props; 
     const { isOpen } = this.state;
 
     return (
       <nav className="navbar">
         <div className="containerNav">
-          <Link to="/" className="logo"> {/* Gunakan Link daripada a untuk routing */}
+          <Link to="/" className="logo"> 
             {logo}
           </Link>
           <div className="menu-toggle" onClick={this.toggleMenu}>
@@ -33,7 +33,7 @@ class Navbar extends Component {
           </div>
           <div className={`menu ${isOpen ? "open" : ""}`}>
             {menuItems.map((item, index) => (
-              <Link to={paths[index]} key={index}> {/* Gunakan Link dengan jalur sesuai dengan index */}
+              <Link to={paths[index]} key={index}>
                 {item}
               </Link>
             ))}
@@ -47,13 +47,13 @@ class Navbar extends Component {
 Navbar.propTypes = {
   logo: PropTypes.string.isRequired,
   menuItems: PropTypes.array.isRequired,
-  paths: PropTypes.array.isRequired // tambahkan properti paths ke PropTypes
+  paths: PropTypes.array.isRequired
 };
 
 Navbar.defaultProps = {
   logo: "React Class News",
   menuItems: ["Home"],
-  paths: ["/"] // atur jalur default
+  paths: ["/"] 
 };
 
 export default Navbar;
